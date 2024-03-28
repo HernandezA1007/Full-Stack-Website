@@ -1,0 +1,91 @@
+<!-- <p>register works!</p> -->
+
+<!-- Initial Design -->
+<!-- <div class="container m5-5 mb-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Register Form</h4>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Register</h2>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" id="username" class="form-control" formControlName="username" placeholder="Enter username"> <!-- [ngClass]="{'is-invalid': registerForm.get('username').invalid && registerForm.get('username').touched}" -->
+                        <!-- <div class="invalid-feedback" *ngIf="registerForm.get('username').errors?.['required']">
+                            Username is required.
+                        </div>
+                        <div class="invalid-feedback" *ngIf="registerForm.get('username').errors?.['minlength']">
+                            Username must be at least 3 characters.
+                        </div> -->
+                        <!-- <div *ngIf="registerForm.controls.username.touched && registerForm.controls.username.errors">
+                            <small class="text-danger" *ngIf="registerForm.controls.username.errors.required">
+                            Username is required.
+                            </small>
+                            <small class="text-danger" *ngIf="registerForm.controls.username.errors.minlength">
+                            Username must be at least 3 characters long.
+                            </small>
+                        </div> -->
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" class="form-control" formControlName="email" placeholder="Enter email address">
+                        
+                        <!-- <div *ngIf="registerForm.controls.email.touched && registerForm.controls.email.errors">
+                        <small class="text-danger" *ngIf="registerForm.controls.email.errors.required">
+                            Email is required.
+                        </small>
+                        <small class="text-danger" *ngIf="registerForm.controls.email.errors.email">
+                            Email must be a valid email address.
+                        </small>
+                        </div> -->
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" class="form-control" formControlName="password" placeholder="Enter password">
+                    
+                        <!-- <div *ngIf="registerForm.controls.password.touched && registerForm.controls.password.errors">
+                        <small class="text-danger" *ngIf="registerForm.controls.password.errors.required">
+                            Password is required.
+                        </small>
+                        <small class="text-danger" *ngIf="registerForm.controls.password.errors.minlength">
+                            Password must be at least 6 characters long.
+                        </small>
+                        </div> -->
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword">
+                        
+                        <!-- <div *ngIf="registerForm.controls.confirmPassword.touched && registerForm.controls.confirmPassword.errors">
+                        <small class="text-danger" *ngIf="registerForm.controls.confirmPassword.errors.required">
+                            Confirm Password is required.
+                        </small>
+                        <small class="text-danger" *ngIf="registerForm.controls.confirmPassword.errors.mustMatch">
+                            Passwords must match.
+                        </small>
+                        </div> -->
+
+                    </div>
+                    <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

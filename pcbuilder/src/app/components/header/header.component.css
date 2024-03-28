@@ -1,0 +1,29 @@
+
+.text-red {
+    color: #ff3333;
+}
+
+.navbar-brand span {
+    font-weight: bold;
+    font-size: 2rem; 
+}
+
+/* Adjust navbar colors */
+/* .navbar-dark {
+    background-color: #333; 
+} */
+
+.nav-link {
+    margin-right: 1rem; 
+}
+
+.nav-link:hover {
+    color: #ff3333; 
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .nav-link {
+        margin-right: 0.5rem; 
+    }
+}

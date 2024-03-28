@@ -1,0 +1,22 @@
+
+.container {
+    margin-top: 20px;
+}
+
+.form-select {
+    margin-bottom: 10px;
+}
+
+.card {
+    margin-top: 20px;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#totalPrice {
+    color: #ff3333; /* Red color for price */
+}

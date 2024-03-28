@@ -1,0 +1,175 @@
+<!-- <p>home works!</p> -->
+
+
+<!-- Home page about PC Builder and what it can provide (information, pc parts/computers, guides, best deals, pre builts and other services) -->
+<!-- <h1>PC Builder is a website that can help provide help on computer building, guidance, information...</h1> -->
+
+<!-- Welcome Section -->
+<div class="bg-dark text-white text-center py-5">
+    <h1>Welcome to PC Builder</h1>
+    <p>PC Builder is a website that can help provide help on computer building, learning, shopping and other services</p>
+</div>
+
+
+<!-- Services/Features? -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-4">
+            <h3>PC Building</h3>
+            <p>Customize your own computer by picking parts and we'll provide information, guides, and other services</p>
+        </div>
+        <div class="col-md-4">
+            <h3>Shop</h3>
+            <p>Shop from a selection of computer parts and pre-builds</p>
+        </div>
+        <div class="col-md-4">
+            <h3>Guides & Tips</h3>
+            <p>Learn about computer parts, building, troubleshooting, and other information</p>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action -->
+<div class="text-center my-5">
+    <a href="/pc-builder" class="btn btn-primary btn-lg me-3">
+        <i class="fa-solid fa-screwdriver-wrench"></i>Build Your PC
+    </a> 
+    <a href="/shop-services" class="btn btn-primary btn-lg">
+        <i class="fa-solid fa-store"></i>Visit Shop <!-- fa-shopping-card -->
+    </a>
+</div>
+
+<!-- Slideshow demonstration -->
+<div id="pcCarousel" class="carousel slide bg-dark" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="assets/pc1.jpg" class="d-block w-100" alt="PC Image 1">
+        </div>
+        <div class="carousel-item">
+            <img src="assets/pc2.jpg" class="d-block w-100" alt="PC Image 2">
+        </div>
+        <div class="carousel-item">
+            <img src="assets/pc3-wires.jpg" class="d-block w-100" alt="PC Image 3">
+        </div>
+        <div class="carousel-item">
+            <img src="assets/pc4-lights.jpg" class="d-block w-100" alt="PC Image 4">
+        </div>
+        <div class="carousel-item">
+            <img src="assets/mypcpp-list.png" class="d-block w-100" alt="PC Image 5">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#pcCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#pcCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+<!-- Recommendation, Reviews, and Resources... -->
+
+<!-- Recommendations -->
+<div class="container my-5">
+    <div class="card bg-light mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Recommendations</h5>
+            <p class="card-text">Get a recommendation on what parts to get for your computer.</p>
+            <a href="#" class="btn btn-sm btn-outline-dark">Learn More</a>
+        </div>
+    </div>
+</div>
+
+<!-- Reviews -->
+<div class="container my-5">
+    <div class="card bg-light mb-3">
+        <div class="card-header">
+            <h5 class="card-title">Customer Reviews</h5>
+        </div>
+        <!-- Can the carousel/go up and down instead of side? -->
+        <div id="reviewsCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="assets/review1.jpg" class="img-fluid rounded-circle" alt="Reviewer 1">
+                            </div>
+                            <div class="col-md-8">
+                                <h6 class="card-subtitle mb-2 text-muted">John Doe</h6>
+                                <p class="card-text">"I had an excellent experience with PC Builder. The step-by-step guide helped me assemble my dream gaming rig. Highly recommended!"</p>
+                                <p class="card-text"><small class="text-muted">Reviewed on: Dec 1, 2023</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ... other review items -->
+                <div class="carousel-item">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="assets/review2.jpg" class="img-fluid rounded-circle" alt="Reviewer 2">
+                            </div>
+                            <div class="col-md-8">
+                                <h6 class="card-subtitle mb-2 text-muted">Jane Doe</h6>
+                                <p class="card-text">"The information and guidance provided helped me learn more about PC parts before I build a computer."</p>
+                                <p class="card-text"><small class="text-muted">Reviewed on: Dec 1, 2023</small></p>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <div class="card-footer text-center">
+            <a href="#" class="btn btn-sm btn-outline-dark mt-3">See All Reviews</a>
+        </div>
+    </div>
+</div>
+
+<!-- Other Resources -->
+<div class="container my-5">
+    <div class="card bg-light mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Resources</h5>
+            <ul>
+                <li><a href="https://pcmasterrace.org/builds">PCMasterRace Builds Guide</a></li>
+                <!-- More links or content here -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="container my-5">
+    <div class="row">
+
+        <div class="col-md-4">
+            <h3>Recommendations</h3>
+            <p>Get a recommendation on what parts to get for your computer</p>
+            <p>Recommendations on guides and tutorials available</p>
+        </div>
+
+        <div class="col-md-4">
+            <h3>Reviews</h3>
+            <p>Read reviews on computer parts and pre-builds</p>
+            <p>Reviews on previous clients who got help from me...</p>
+        </div>
+
+        <div class="col-md-4">
+            <h3>Other Resources</h3>
+            <p>Find resources on computer parts, building, and other information</p>
+            <ul>
+                <li><a href="https://pcmasterrace.org/builds">PCMasterRace Builds Guide</a></li>
+            </ul>
+        </div>
+    </div>
+</div> -->

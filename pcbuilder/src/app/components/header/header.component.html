@@ -1,0 +1,87 @@
+<!-- <p>header works!</p> -->
+<!-- Header | Navigation -->
+<!-- <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/"><img src="../assets/pc-builder.png" width="40" height="40" class="d-inline-block align-middle rounded-circle"/>PCBuilder</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                <a class="nav-link" routerLink="/">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" routerLink="/pc-builder">PC Builder</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" routerLink="/shop-services">Shop-Services</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" routerLink="/about">About</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" routerLink="/contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Login</a>
+            </li>
+        </ul>
+    </div>
+</nav> -->
+
+<!-- This navigation separates the two rows into a cleaner design -->
+<div class="container-fluid bg-dark">
+    <!-- Header -->
+    <div class="row py-2 border-bottom border-secondary">
+        <div class="col-md-6 d-flex align-items-center">
+            <a class="navbar-brand text-red" routerLink="/">
+                <img src="../assets/pc-builder.png" width="40" height="40" class="d-inline-block align-middle rounded-circle"/>
+                <span class="h2">PC Builder</span>
+            </a>
+        </div>
+        <div class="col-md-6 d-flex justify-content-end align-items-center">
+            <a class="nav-link text-white" routerLink="/register">
+                <i class="fa-solid fa-user-plus"></i> Register
+            </a>
+            <a class="nav-link text-white" routerLink="/login">
+                <i class="fa-solid fa-right-to-bracket"></i> Login
+            </a>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark"> <!-- bg-primary -->
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/pc-builder">PC Builder</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/shop-services">Shop-Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
