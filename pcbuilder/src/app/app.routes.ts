@@ -9,6 +9,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ShopServicesComponent } from './components/shop-services/shop-services.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
@@ -21,6 +22,7 @@ export const routes: Routes = [
     { path: 'contact', component: ContactComponent },
     { path: 'shop-services', component: ShopServicesComponent },
     { path: 'register', component: RegisterComponent },
+    { path: 'login', component: LoginComponent },
     { path: 'admin', component: AdminComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: '**', component: PagenotfoundComponent }

@@ -1,7 +1,5 @@
-// Antonio Hernandez
-// INF 656
-// Muvva
-// 11 - 25 - 23
+// This is the main file that contains the functionality of the backend server. 
+// It connects to the MongoDB database, sets up the routes, and starts the server.
 
 const express = require("express");
 const mongoose = require("mongoose");

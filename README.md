@@ -6,27 +6,27 @@ Overview/Descrition... README documentation soon...
 
 ## Features
 
-- 
-- 
-- 
+-
+-
+-
 
 ## Prerequisites / Built With
 
-- 
-- 
-- 
+-
+-
+-
 
 ## Setup / (How to Run or View?)
 
-1. 
-2. 
-3. 
+1.
+2.
+3.
 
 ## Development Roadmap ?
 
-- [ ] 
-- [ ] 
-- [ ] 
+- [ ]
+- [ ]
+- [ ]
 
 ## Gallery
 
@@ -34,6 +34,6 @@ Overview/Descrition... README documentation soon...
 
 ## Future Enchancements
 
-1. 
-2. 
-3. 
+1.
+2.
+3.
