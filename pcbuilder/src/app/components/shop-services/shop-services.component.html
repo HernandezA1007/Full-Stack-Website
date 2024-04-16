@@ -142,8 +142,28 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
 
-
+<!-- Dynamic populate HTML template based on backend data -->
+<div class="container my-5">
+    <h1>Explore Products</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+        <!-- Dynamic Product Card -->
+        <div class="col" *ngFor="let item of items">
+            <div class="card h-100">
+                <img [src]="item.imageUrl" class="card-img-top" alt="{{ item.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.name }}</h5>
+                    <p class="card-text">{{ item.description }}</p>
+                    <p class="card-text"><small class="text-muted">Price: ${{ item.price }}</small></p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary me-2">View Details</a>
+                    <a [href]="item.vendorUrl" class="btn btn-outline-secondary" target="_blank">Go to Vendor</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

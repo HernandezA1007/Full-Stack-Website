@@ -5,8 +5,9 @@ const shopItemSchema = new mongoose.Schema({
     description: String,
     price: { type: Number, required: true },
     imageUrl: String,
-    // Add more fields later..
-    // vendor/3rd party linking
+    vendorUrl: { type: String, required: true }
+    // Edit fields later..
+
 });
 
 module.exports = mongoose.model('ShopItem', shopItemSchema);
