@@ -4,12 +4,16 @@ const router = express.Router();
 
 
 // Route for contact form data
-router.post('/contact', async (req, res) => {
-    const newContact = new Contact(req.body);
+router.post('/', async (req, res) => { // /contact
+    const { name, email, message } = req.body;
+    const newContact = new Contact({ name, email, message});
+
     try {
         await newContact.save();
-        res.status(201).send("Contact form received");
+        res.status(201).json({ message: "Contact form submitted successfully!" });
     } catch (error) {
-        res.status(400).send(error);
+        res.status(400).json({ message: error.message });
     }
 });
+
+module.exports = router;

@@ -4,7 +4,7 @@
     <!-- Contact Form -->
     <section>
         <h1>Contact Us</h1>
-        <form>
+        <!-- <form>
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" class="form-control" id="name" placeholder="Your Name">
@@ -18,6 +18,21 @@
                 <textarea class="form-control" id="message" rows="3" placeholder="Your Message"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Send Message</button>
+        </form> -->
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" formControlName="name" placeholder="Your Name">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" formControlName="email" placeholder="Your Email">
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" formControlName="message" rows="3" placeholder="Your Message"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!contactForm.valid">Send Message</button>
         </form>
     </section>
 
@@ -31,6 +46,7 @@
             </a>
             <!-- Add more social links as needed -->
         </p>
+        <p>TBD</p>
     </section>
 
 
@@ -38,7 +54,8 @@
     <section class="my-5">
         <h2>Find Us</h2>
         <!-- Embed Google Maps or static image -->
-        <p>123 PC Builder Lane, Computer City, PC 12345</p>
+        <p>600 Park St, Hays, KS 67601</p>
+        <!-- 123 PC Builder lane, Computer City, PC 12345 -->
         <p class="text-muted">(Change address later)</p>
         <div class="map-container">
             <iframe

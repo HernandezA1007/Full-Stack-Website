@@ -9,7 +9,7 @@ const cors = require("cors");
 // const errorHandler = require("./middleware/errorHandler");
 const userRoutes = require("./routes/users");
 const shopItemRoutes = require("./routes/shopItems");
-const contactRoutes = require("./routes/contacts");
+const contactRoutes = require("./routes/contacts"); 
 const corsOptions = require("./config/corsOptions");
 require("dotenv").config();
 
@@ -44,7 +44,7 @@ app.get("/", (req, res) => {
 });
 app.use("/api/users", userRoutes);
 app.use("/api/shop-items", shopItemRoutes); // shop-items or shopItems?
-// app.use("/api/contacts", contactRoutes); 
+app.use("/api/contacts", contactRoutes); 
 
 // mongoose connection..?
 mongoose.connection.once("open", () => {
