@@ -37,17 +37,43 @@ router.get('/', async (req, res) => {
 //     }
 // });
 
-router.post('/', async (req, res) => {
+// Register a new user
+router.post('/register', async (req, res) => {
     const { username, email, password } = req.body;
+    const newUser = new User({ username, email, password });
 
     try {
-        const newUser = new User({ username, email, password });
-        const savedUser = await newUser.save();
-        res.status(201).json(savedUser);
+      await newUser.save();
+      res.status(201).json({ message: "User registered successfully!" });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+      res.status(400).json({ message: error.message });
+    }
+})
+
+// Login a user
+router.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email: email });
+
+    if (user && user.password === password) {
+      res.status(200).json({ message: "Logged in successfully!" });
+    } else {
+      res.status(401).json({ message: "Invalid credentials" });
     }
 });
+
+// This works for backend testing
+// router.post('/', async (req, res) => {
+//     const { username, email, password } = req.body;
+
+//     try {
+//         const newUser = new User({ username, email, password });
+//         const savedUser = await newUser.save();
+//         res.status(201).json(savedUser);
+//     } catch (error) {
+//         res.status(500).json({ message: error.message });
+//     }
+// });
 
 // GET /api/users/:id - get a specific user
 router.get('/:id', async (req, res) => {

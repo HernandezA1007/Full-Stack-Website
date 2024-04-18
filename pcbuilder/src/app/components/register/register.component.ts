@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-register',
@@ -16,9 +18,17 @@ export class RegisterComponent {
     confirmPassword: new FormControl('', [Validators.required])
   });
 
-  onSubmit() {
-    console.log(this.registerForm.value);
-  }
+  constructor(private userService: UserService) {}
 
-  // additional validation..
+  onSubmit() {
+    // console.log(this.registerForm.value);
+    if (this.registerForm.valid) {
+      this.userService.registerUser(this.registerForm.value as User).subscribe({
+        next: (response) => console.log("User registered:", response),
+        error: (error) => console.error("Failed to register user:", error)
+      });
+    } else {
+      console.error("Registration form is not valid:", this.registerForm.errors);
+    }
+  }
 }
