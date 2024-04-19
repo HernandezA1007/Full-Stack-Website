@@ -16,8 +16,17 @@ export class ShopItemService {
         return this.http.get<any>(this.apiUrl);
     }
 
+    getItemsByCategory(category: string): Observable<ShopItem[]> {
+        return this.http.get<ShopItem[]>(`${this.apiUrl}/category/${category}`);
+    }
+
     // add shop items for admin
     addShopItem(item: ShopItem): Observable<ShopItem> {
         return this.http.post<ShopItem>(this.apiUrl, item);
+    }
+
+    // 
+    updateItemCategory(itemId: string, category: { category: string }): Observable<ShopItem> {
+        return this.http.put<ShopItem>(`${this.apiUrl}/update-category/${itemId}`, category);
     }
 }

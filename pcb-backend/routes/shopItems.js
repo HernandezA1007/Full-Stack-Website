@@ -27,26 +27,45 @@ router.get('/', async (req, res) => {
 });
 
 // GET - Retrieve a single shop item by ID
-router.get('/:id', async (req, res) => {
+// router.get('/:id', async (req, res) => {
+//     try {
+//         const shopItem = await ShopItem.findById(req.params.id);
+//         if (!shopItem) res.status(404).json({ message: 'Shop item not found' });
+//         res.json(shopItem);
+//     } catch (error) {
+//         res.status(500).json({ message: error.message });
+//     }
+// });
+
+router.get('/category/:category', async (req, res) => {
     try {
-        const shopItem = await ShopItem.findById(req.params.id);
-        if (!shopItem) res.status(404).json({ message: 'Shop item not found' });
-        res.json(shopItem);
+        const items = await ShopItem.find({ category: req.params.category });
+        res.json(items);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: error.message});
     }
 });
 
 // PUT - Update a shop item by ID
-router.put('/:id', async (req, res) => {
+// router.put('/:id', async (req, res) => {
+//     try {
+//         const shopItem = await ShopItem.findByIdAndUpdate(req.params.id, req.body, { new: true });
+//         if (!shopItem) res.status(404).json({ message: 'Shop item not found' });
+//         res.json(shopItem);
+//     } catch (error) {
+//         res.status(500).json({ message: error.message });
+//     }
+// });
+
+router.put('/update-category/:id', async (req, res) => {
+    const { category } = req.body;
     try {
-        const shopItem = await ShopItem.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if (!shopItem) res.status(404).json({ message: 'Shop item not found' });
-        res.json(shopItem);
+        const updatedItem = await ShopItem.findByIdAndUpdate(req.params.id, { category }, { new: true});
+        res.json(updatedItem);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(400).json({ message: error.message });
     }
-});
+})
 
 // DELETE - Delete a shop item by ID
 router.delete('/:id', async (req, res) => {

@@ -17,96 +17,81 @@
 </div> -->
 
 
-<div class="container my-5">
+<!-- Concept -->
+<!-- <div class="container my-5">
   <h1>Build your own PC</h1>
   <p class="card-text">Select your components and build your own PC</p>
   <div class="row">
-    <!-- Component Selection Area -->
+     Component Selection Area... 
     <div class="col-md-8">
       <form>
-        <!-- CPU Dropdown -->
         <div class="mb-3">
           <label for="cpuSelect" class="form-label">CPU</label>
           <select class="form-select" id="cpuSelect">
               <option selected>Choose...</option>
               <option value="1">Intel Core i7</option>
               <option value="2">AMD Ryzen 7</option>
-              <!-- More CPU options -->
           </select>
       </div>
-      <!-- Motherboard Dropdown -->
       <div class="mb-3">
           <label for="motherboardSelect" class="form-label">Motherboard</label>
           <select class="form-select" id="motherboardSelect">
               <option selected>Choose...</option>
               <option value="1">ASUS ROG Strix Z490-E</option>
               <option value="2">MSI MPG Z490 Gaming Edge</option>
-              <!-- More Motherboard options -->
           </select>
       </div>
-      <!-- GPU Dropdown -->
       <div class="mb-3">
           <label for="gpuSelect" class="form-label">GPU</label>
           <select class="form-select" id="gpuSelect">
               <option selected>Choose...</option>
               <option value="1">NVIDIA GeForce RTX 3080</option>
               <option value="2">AMD Radeon RX 6800 XT</option>
-              <!-- More GPU options -->
           </select>
       </div>
-      <!-- RAM Dropdown -->
       <div class="mb-3">
           <label for="ramSelect" class="form-label">RAM</label>
           <select class="form-select" id="ramSelect">
               <option selected>Choose...</option>
               <option value="1">Corsair Vengeance RGB Pro 16GB</option>
               <option value="2">G.Skill Trident Z RGB 16GB</option>
-              <!-- More RAM options -->
           </select>
       </div>
-      <!-- Storage Dropdown -->
       <div class="mb-3">
           <label for="storageSelect" class="form-label">Storage</label>
           <select class="form-select" id="storageSelect">
               <option selected>Choose...</option>
               <option value="1">Samsung 970 Evo Plus 1TB</option>
               <option value="2">WD Black SN750 1TB</option>
-              <!-- More Storage options -->
           </select>
       </div>
-      <!-- Power Supply Dropdown -->
       <div class="mb-3">
           <label for="psuSelect" class="form-label">Power Supply</label>
           <select class="form-select" id="psuSelect">
               <option selected>Choose...</option>
               <option value="1">Corsair RM750x</option>
               <option value="2">Seasonic Focus GX-750</option>
-              <!-- More Power Supply options -->
           </select>
       </div>
-      <!-- Case Dropdown -->
       <div class="mb-3">
           <label for="caseSelect" class="form-label">Case</label>
           <select class="form-select" id="caseSelect">
               <option selected>Choose...</option>
               <option value="1">NZXT H510</option>
               <option value="2">Corsair 4000D Airflow</option>
-              <!-- More Case options -->
           </select>
       </div>
-      <!-- More... -->
+       More... 
       </form>
-    </div>
+    </div> 
 
-
-    <!-- Selected Items and Prices -->
+     Selected Items and Prices...
     <div class="col-md-4">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Your Build</h5>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">CPU: <span id="selectedCpu">None</span></li>
-                        <!-- ...other selected component items... -->
                         <li class="list-group-item">Motherboard: <span id="selectedMotherboard">None</span></li>
                         <li class="list-group-item">GPU: <span id="selectedGpu">None</span></li>
                         <li class="list-group-item">RAM: <span id="selectedRam">None</span></li>
@@ -118,6 +103,59 @@
                         <h5>Total Price: <span id="totalPrice">$0.00</span></h5>
                         <button class="btn btn-primary" type="submit">Proceed</button>
                     </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container my-5">
+  <h1>Build your own PC</h1>
+  <p class="card-text">Select your components and build your own PC</p>
+  <div class="row">
+    <!-- Component Selection Area -->
+    <div class="col-md-8">
+      <form>
+        <!-- Dynamic Component Dropdowns -->
+        <div class="mb-3" *ngFor="let category of categories">
+          <label [for]="category + 'Select'" class="form-label">{{ category }}</label>
+          <!-- <select class="form-select" [id]="category + 'Select'" (change)="onSelectItem(category, $event.target.value)">
+            <option value="" disabled selected>Choose...</option>
+            <option *ngFor="let item of components[category]" [ngValue]="item">{{ item.name }}</option>
+          </select> -->
+
+          <!-- <select class="form-select" [id]="category + 'Select'" (change)="onSelectItem(category, components[category][$event.target.selectedIndex - 1])">
+            <option value="" disabled selected>Choose...</option>
+            <option *ngFor="let item of components[category]" [ngValue]="item">{{ item.name }}</option>
+          </select> -->
+
+          <!-- <select class="form-select" [id]="category + 'Select'" (change)="onSelectItem(category, components[category][(($event.target as HTMLSelectElement).selectedIndex - 1)])">
+            <option value="" disabled selected>Choose...</option>
+            <option *ngFor="let item of components[category]" [ngValue]="item">{{ item.name }}</option>
+          </select> -->
+
+          <select class="form-select" [id]="category + 'Select'" (change)="onSelectItem(category, $event)">
+            <option value="" disabled selected>Choose...</option>
+            <option *ngFor="let item of components[category]" [value]="item">{{ item.name }}</option>
+          </select>
+        </div>
+      </form>
+    </div>
+
+    <!-- Selected Items and Prices -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Your Build</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngFor="let category of categories">
+              {{ category }}: <span>{{ selectedItems[category]?.name || 'None' }}</span>
+            </li>
+          </ul>
+          <div class="card-footer">
+            <h5>Total Price: <span>${{ totalPrice.toFixed(2) }}</span></h5>
+            <button class="btn btn-primary" type="submit">Proceed</button>
+          </div>
         </div>
       </div>
     </div>
