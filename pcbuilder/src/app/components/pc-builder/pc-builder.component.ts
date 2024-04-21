@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ShopItem } from '../../models/shop-item.model';
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-pc-builder',
@@ -53,5 +55,26 @@ export class PcBuilderComponent implements OnInit {
                             .filter(item => item !== undefined && item !== null)
                             // .reduce((acc, item) => acc + item.price, 0);
                             .reduce((acc, item) => acc + (item ? item.price : 0), 0);
+  }
+
+  // 
+  printBuild() {
+    window.print();
+  }
+
+  downloadPDF() {
+    const content: HTMLElement = document.querySelector('#buildModalContent') as HTMLElement;
+    html2canvas(content).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF();
+      pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+      pdf.save("build.pdf");
+    }).catch(err => console.error('Error generating PDF', err));
+  }
+
+  prepareEmail() {
+    const content: HTMLElement = document.querySelector('#buildModalContent') as HTMLElement;
+    const emailBody = encodeURIComponent(content.innerText);
+    window.open(`mailto:?subject=Your PC Build&body=${emailBody}`);
   }
 }

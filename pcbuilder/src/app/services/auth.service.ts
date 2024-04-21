@@ -6,24 +6,51 @@ import { User } from '../models/user.model';
     providedIn: 'root'
 })
 export class AuthService {
-    private currentUserSubject = new BehaviorSubject<User | null>(null);
-    public currentUser = this.currentUserSubject.asObservable();
+    // private currentUserSubject = new BehaviorSubject<User | null>(null);
+    // public currentUser = this.currentUserSubject.asObservable();
 
-    constructor() { }
+    // constructor() { }
 
-    public get currentUserValue(): User | null {
-        return this.currentUserSubject.value;
+    // public get currentUserValue(): User | null {
+    //     return this.currentUserSubject.value;
+    // }
+
+    // login(user: User) {
+    //     // Store user details and jwt token in local storage to keep user logged in between page refreshes
+    //     localStorage.setItem('currentUser', JSON.stringify(user));
+    //     this.currentUserSubject.next(user);
+    // }
+
+    // logout() {
+    //     // remove user from local storage to log user out
+    //     localStorage.removeItem('currentUser');
+    //     this.currentUserSubject.next(null);
+    // }
+
+    private loggedIn = new BehaviorSubject<boolean>(false);
+    private currentUser = new BehaviorSubject<User | null>(null);
+
+    get isLoggedIn() {
+        return this.loggedIn.asObservable();
     }
 
+    get currentUserDetails() {
+        return this.currentUser.asObservable();
+    }
+
+    constructor() {}
+
     login(user: User) {
-        // Store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
+        // if (user.email !== '' && user.password !== '' ) {
+        //     this.loggedIn.next(true);
+        //     this.currentUser.next(user);
+        // }
+        this.loggedIn.next(true);
+        this.currentUser.next(user);
     }
 
     logout() {
-        // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
-        this.currentUserSubject.next(null);
+        this.loggedIn.next(false);
+        this.currentUser.next(null);
     }
 }

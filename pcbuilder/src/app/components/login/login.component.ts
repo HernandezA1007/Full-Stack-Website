@@ -3,6 +3,7 @@ import { ReactiveFormsModule, FormControl, FormGroup, Validators } from "@angula
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../services/user.service';
 // import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 import { User } from '../../models/user.model';
 
 @Component({
@@ -15,23 +16,21 @@ import { User } from '../../models/user.model';
 export class LoginComponent {
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]), 
-    // username instead of email? -> minLength(6)
+    // username or email? -> minLength(6)
     password: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
 
-  constructor(private userService: UserService) {} // private authService: AuthService
+  constructor(private userService: UserService, private router: Router) {} // private authService: AuthService
 
   onSubmit() {
     // console.log(this.loginForm.value);
     if (this.loginForm.value) {
       this.userService.loginUser(this.loginForm.value as User).subscribe({
-        next: (response) => console.log("User logged in:", response),
+        next: (response) => {
+          console.log("User logged in:", response);
+          this.router.navigate(['/']); // Redirect to home page
+        },
         error: (error) => console.error("Failed to log in:", error)
-        // next: (response) => {
-        //   console.log("User logged in:", response);
-        //   this.authService.login(this.loginForm.value as User);
-        // },
-        // error: (error) => console.error("Failed to log in:", error)
       });
     } else {
       console.error("Login form is not valid:", this.loginForm.errors);

@@ -48,6 +48,30 @@
             </a>
         </div>
         <div class="col-md-6 d-flex justify-content-end align-items-center">
+
+            <!-- User Authentication -->
+            <!-- <div *ngIf="isLoggedIn$ | async as user" class="login-info text-white">
+                Welcome, {{ user?.username || 'Guest' }}
+            </div>
+            <div *ngIf="!(isLoggedIn$ | async)" class="login-info text-white">
+                Not logged in
+            </div> -->
+
+            <ng-container *ngIf="currentUser$ | async as user; else notLoggedIn">
+                <div class="login-info text-white">
+                    Welcome, {{ user?.username || 'Guest' }} 
+                </div>
+            </ng-container>
+            <ng-template #notLoggedIn>
+                <div class="login-info text-white">
+                    Not logged in
+                </div>
+            </ng-template>
+
+            <!-- <div *ngIf="currentUser; else notLoggedIn" class="login-info text-white">
+                Welcome, {{ currentUser.username || 'Guest' }}
+            </div> -->
+
             <a class="nav-link text-white" routerLink="/register">
                 <i class="fa-solid fa-user-plus"></i> Register
             </a>

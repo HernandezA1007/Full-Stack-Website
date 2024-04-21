@@ -154,9 +154,39 @@
           </ul>
           <div class="card-footer">
             <h5>Total Price: <span>${{ totalPrice.toFixed(2) }}</span></h5>
-            <button class="btn btn-primary" type="submit">Proceed</button>
+            <!-- <button class="btn btn-primary" type="submit">Proceed</button> -->
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#buildModal">Proceed</button>
           </div>
         </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="buildModal" tabindex="-1" aria-labelledby="buildModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" id="buildModalContent">
+      <div class="modal-header">
+        <h5 class="modal-title" id="buildModalLabel">Your Build Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let category of categories">
+            <!-- {{ category }}: {{ selectedItems[category]?.name || 'None' }}
+            - ${{ selectedItems[category]?.price.toFixed(2) }} -->
+            {{ category }}: {{ selectedItems[category]?.name || 'None' }}
+            - ${{ (selectedItems[category]?.price || 0).toFixed(2) }}
+          </li>
+        </ul>
+        Total Price: ${{ totalPrice.toFixed(2) }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="printBuild()">Print</button>
+        <button type="button" class="btn btn-success" (click)="downloadPDF()">Download PDF</button>
+        <button type="button" class="btn btn-info" (click)="prepareEmail()">Email</button>
       </div>
     </div>
   </div>

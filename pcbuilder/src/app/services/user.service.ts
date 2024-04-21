@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { User } from '../models/user.model';
+import { AuthService } from './auth.service'; //
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -10,7 +12,7 @@ import { User } from '../models/user.model';
 export class UserService {
     private apiUrl = 'http://localhost:3000/api/users';
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private authService: AuthService) { }
 
     // getUsers(): Observable<any> {
     //     return this.http.get<any>(this.apiUrl);
@@ -24,7 +26,16 @@ export class UserService {
         return this.http.post(`${this.apiUrl}/register`, userData);
     }
 
+    // loginUser(loginData: User): Observable<any> {
+    //     return this.http.post(`${this.apiUrl}/login`, loginData);
+    // }
     loginUser(loginData: User): Observable<any> {
-        return this.http.post(`${this.apiUrl}/login`, loginData);
+        return this.http.post<User>(`${this.apiUrl}/login`, loginData).pipe(
+            tap(user => this.authService.login(user)),  // Notify AuthService upon successful login
+            catchError(error => {
+                console.error('Login error:', error);
+                return of(null);  // Handle login error (e.g., user not found or wrong credentials)
+            })
+        );
     }
 }
