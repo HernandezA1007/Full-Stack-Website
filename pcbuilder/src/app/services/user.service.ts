@@ -29,6 +29,8 @@ export class UserService {
     // loginUser(loginData: User): Observable<any> {
     //     return this.http.post(`${this.apiUrl}/login`, loginData);
     // }
+
+    // This one works 
     loginUser(loginData: User): Observable<any> {
         return this.http.post<User>(`${this.apiUrl}/login`, loginData).pipe(
             tap(user => this.authService.login(user)),  // Notify AuthService upon successful login
@@ -38,4 +40,19 @@ export class UserService {
             })
         );
     }
+
+    // Works but breaks Auth Service/Header?
+    // loginUser(loginData: User): Observable<any> {
+    //     return this.http.post<User>(`${this.apiUrl}/login`, loginData).pipe(
+    //         tap(user => {
+    //             if (user && user.email) {  // Assuming email will be non-null only on successful login
+    //                 this.authService.login(user);  // Notify AuthService upon successful login
+    //             }
+    //         }),
+    //         catchError(error => {
+    //             console.error('Login error:', error);
+    //             return of(null);  // Handle login error (e.g., user not found or wrong credentials)
+    //         })
+    //     );
+    // }
 }

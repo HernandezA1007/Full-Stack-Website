@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs'; // Observable
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -30,10 +30,12 @@ export class AuthService {
     private loggedIn = new BehaviorSubject<boolean>(false);
     private currentUser = new BehaviorSubject<User | null>(null);
 
+    // add : Observable<boolean> {
     get isLoggedIn() {
         return this.loggedIn.asObservable();
     }
 
+    // add : Observable<User | null> {
     get currentUserDetails() {
         return this.currentUser.asObservable();
     }

@@ -57,7 +57,9 @@
                 Not logged in
             </div> -->
 
-            <ng-container *ngIf="currentUser$ | async as user; else notLoggedIn">
+            <!-- This works -->
+            <!--  removed , after welcome and || 'Guest' -->
+            <!-- <ng-container *ngIf="currentUser$ | async as user; else notLoggedIn">
                 <div class="login-info text-white">
                     Welcome, {{ user?.username || 'Guest' }} 
                 </div>
@@ -66,18 +68,38 @@
                 <div class="login-info text-white">
                     Not logged in
                 </div>
-            </ng-template>
+            </ng-template> -->
 
+            <!-- Ignore this -->
             <!-- <div *ngIf="currentUser; else notLoggedIn" class="login-info text-white">
                 Welcome, {{ currentUser.username || 'Guest' }}
             </div> -->
 
-            <a class="nav-link text-white" routerLink="/register">
+            <!-- Original/works nav register/login -->
+            <!-- <a class="nav-link text-white" routerLink="/register">
                 <i class="fa-solid fa-user-plus"></i> Register
             </a>
             <a class="nav-link text-white" routerLink="/login">
                 <i class="fa-solid fa-right-to-bracket"></i> Login
-            </a>
+            </a> -->
+
+            <ng-container *ngIf="currentUser$ | async as user; else showAuthLinks">
+                <div class="login-info text-white">
+                    Welcome -> {{ user?.username || 'Profile' }}
+                    <button class="btn btn-danger ms-3" (click)="logout()">Logout</button>
+                </div>
+            </ng-container>
+            <ng-template #showAuthLinks>
+                <div class="login-info text-white">
+                    Not logged in
+                </div>
+                <a class="nav-link text-white" routerLink="/register">
+                    <i class="fa-solid fa-user-plus"></i> Register
+                </a>
+                <a class="nav-link text-white" routerLink="/login">
+                    <i class="fa-solid fa-right-to-bracket"></i> Login
+                </a>
+            </ng-template>
         </div>
     </div>
 

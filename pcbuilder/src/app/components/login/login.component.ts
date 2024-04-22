@@ -16,14 +16,16 @@ import { User } from '../../models/user.model';
 export class LoginComponent {
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]), 
-    // username or email? -> minLength(6)
-    password: new FormControl('', [Validators.required, Validators.minLength(6)])
+    // username or email option?
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]) // new passwords are 8
   });
+  loginError: string = '';
 
   constructor(private userService: UserService, private router: Router) {} // private authService: AuthService
 
   onSubmit() {
     // console.log(this.loginForm.value);
+
     if (this.loginForm.value) {
       this.userService.loginUser(this.loginForm.value as User).subscribe({
         next: (response) => {
@@ -35,5 +37,25 @@ export class LoginComponent {
     } else {
       console.error("Login form is not valid:", this.loginForm.errors);
     }
+
+    // Works but breaks Auth Service/Header?
+    // if (this.loginForm.valid) {
+    //   this.userService.loginUser(this.loginForm.value as User).subscribe({
+    //     next: (user) => {
+    //       if (user) {
+    //         console.log("User logged in:", user);
+    //         this.router.navigate(['/']); // Redirect to home page only on successful login
+    //       } else {
+    //         this.loginError = 'Invalid email or password. Please try again.';
+    //       }
+    //     },
+    //     error: (error) => {
+    //       console.error("Failed to log in:", error);
+    //       this.loginError = 'Login failed due to server error. Please try again later.';
+    //     }
+    //   });
+    // } else {
+    //   console.error("Login form is not valid:", this.loginForm.errors);
+    // }
   }
 }
